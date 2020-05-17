@@ -224,8 +224,7 @@ function mouseMoveHandler(e) {
         paddleX = relativeX - paddleWidth/2;
     }
     if(relativeX>=canvas.width){
-        console.log("deepsy");
-        paddleX=canvas.width-paddleWidth;
+       paddleX=canvas.width-paddleWidth;
     }
     if(relativeX<=0){
         paddleX=0;
