@@ -207,6 +207,8 @@ function keyDownHandler(e) {
     else if(e.key == "Left" || e.key == "ArrowLeft") {
         leftPressed = true;
     }
+   
+    if (e.keyCode == 80) pauseGame();
 }
 function keyUpHandler(e) {
   
@@ -226,10 +228,26 @@ function mouseMoveHandler(e) {
     if(relativeX>=canvas.width){
        paddleX=canvas.width-paddleWidth;
     }
+   
     if(relativeX<=0){
         paddleX=0;
     }
-}   
+}
+//pausing game by pressing p
+//It works by simple logic that if user want to pause the game ,then clear the last interval 
+//if user wants to continue the game ,the set the interval again for 10 milliseconds thhat will draw 
+//the frame 
+gamePaused=false;
+function pauseGame() {
+    if (!gamePaused) {
+         clearInterval(interval);
+        gamePaused = true;
+      } else if (gamePaused) {
+        interval = setInterval(draw, 10);
+        gamePaused = false;
+      }
+  } 
+
 //it will  execute the draw function every 10 milliseconds
 //keydown event to control movement of arrow keys,this event gets triggered when user presses some key
 document.addEventListener("keydown", keyDownHandler, false);
@@ -238,8 +256,6 @@ document.addEventListener("keyup", keyUpHandler, false);
 //this event is triggered when user  controls the paddle by mouse
 document.addEventListener("mousemove", mouseMoveHandler, false);
 document.addEventListener('touchmove', function(e) {
-  
-    console.log(e);
     var touch = e.touches[0];
     var relativeX = touch.clientX - canvas.offsetLeft;
     if(relativeX > 0 && relativeX < canvas.width) {
@@ -252,4 +268,5 @@ document.addEventListener('touchmove', function(e) {
         paddleX=0;
     }
     }, false);
+  
 var interval = setInterval(draw, 10);
