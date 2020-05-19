@@ -237,4 +237,19 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 //this event is triggered when user  controls the paddle by mouse
 document.addEventListener("mousemove", mouseMoveHandler, false);
+document.addEventListener('touchmove', function(e) {
+  
+    console.log(e);
+    var touch = e.touches[0];
+    var relativeX = touch.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+    }
+    if(relativeX>=canvas.width){
+       paddleX=canvas.width-paddleWidth;
+    }
+    if(relativeX<=0){
+        paddleX=0;
+    }
+    }, false);
 var interval = setInterval(draw, 10);
