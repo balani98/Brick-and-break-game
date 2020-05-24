@@ -1,6 +1,9 @@
 *{
     padding:0;
     margin:0;
+  
+}
+body{
     background-image: url("assets/ggg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,11 +16,11 @@ canvas {
 }
 .fa-pause{
     color:white;
-    margin-left:300px;
+    margin-right:100px;
 }
 .fa-play{
     color:white;
-    margin-left:400px;
+   
 }
 .wrapper {
     display: table;
@@ -58,11 +61,7 @@ canvas {
     min-width: 320px;
     margin: 0 auto;
  }
- #main {
-    width: 100%;
-    height: auto;
-    background-color: pink;
- }
+ 
  body::before {
     display: none;
     content: '{ "current": "small", "all": ["small"] }';
@@ -72,6 +71,9 @@ canvas {
     body::before {
       content: '{ "current": "medium", "all": ["small", "medium"] }'
     }
+    .icon-holder{
+        justify-content: space-between;
+        margin-left:  0  }
     
   }
   /* Desktop */
@@ -81,3 +83,6 @@ canvas {
     }
    
   }
+  .icon-holder{
+      justify-content: space-between;
+      margin-left:  200px;  }
