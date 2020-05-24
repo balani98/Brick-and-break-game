@@ -150,7 +150,7 @@ function draw(){
    drawScore();
    drawLives();
    color=collisionDetection();
-
+   
    if(y+dy<ballRadius){
        dy=-dy;
    }else if (y+dy>canvas.height-ballRadius){
@@ -242,11 +242,15 @@ function pauseGame() {
     if (!gamePaused) {
          clearInterval(interval);
         gamePaused = true;
-      } else if (gamePaused) {
+      }
+  } 
+  //this function gets triggered when user presses play button
+ function playGame(){
+    if (gamePaused) {
         interval = setInterval(draw, 10);
         gamePaused = false;
       }
-  } 
+}
 
 //it will  execute the draw function every 10 milliseconds
 //keydown event to control movement of arrow keys,this event gets triggered when user presses some key
@@ -268,5 +272,5 @@ document.addEventListener('touchmove', function(e) {
         paddleX=0;
     }
     }, false);
-  
+   
 var interval = setInterval(draw, 10);
